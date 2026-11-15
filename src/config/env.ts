@@ -27,6 +27,12 @@ const envSchema = z.compile(
 
     CORS_ORIGIN: z.string().optional(),
     COOKIE_DOMAIN: z.string().optional(),
+    BETTER_AUTH_SECRET: z.string().min(1, "BETTER_AUTH_SECRET is required"),
+    BETTER_AUTH_URL: z.string().min(1, "BETTER_AUTH_URL is required"),
+    FACEBOOK_CLIENT_ID: z.string().min(1, "FACEBOOK_CLIENT_ID is required"),
+    FACEBOOK_CLIENT_SECRET: z.string().min(1, "FACEBOOK_CLIENT_SECRET is required"),
+    GOOGLE_CLIENT_ID: z.string().min(1, "GOOGLE_CLIENT_ID is required"),
+    GOOGLE_CLIENT_SECRET: z.string().min(1, "GOOGLE_CLIENT_SECRET is required"),
   }),
 );
 

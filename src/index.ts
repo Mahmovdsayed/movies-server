@@ -4,6 +4,7 @@ import { HTTPException } from "hono/http-exception";
 import { requestId } from "hono/request-id";
 import { secureHeaders } from "hono/secure-headers";
 import { timeout } from "hono/timeout";
+import { auth } from "./infrastructure/auth/auth";
 
 const app = new Hono().basePath("/v1");
 
@@ -32,13 +33,13 @@ app.use(
       geolocation: [],
     },
   }),
-); 
+);
 
 app.use(
   "*",
   timeout(30000, () => new HTTPException(504, { message: "Gateway Timeout" })),
 );
 app.use("*", compress());
-
+app.on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw));
 
 export default app;
