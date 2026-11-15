@@ -32,7 +32,7 @@ app.use(
       geolocation: [],
     },
   }),
-);
+); 
 
 app.use(
   "*",
