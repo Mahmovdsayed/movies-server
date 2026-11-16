@@ -37,3 +37,7 @@ export const likedMoviesTable = pgTable(
     ),
   ],
 );
+
+export const likedMovies = likedMoviesTable;
+export type LikedMovie = typeof likedMoviesTable.$inferSelect;
+export type NewLikedMovie = typeof likedMoviesTable.$inferInsert;
