@@ -10,6 +10,12 @@ import { emailService } from "../email/email";
 export const auth = betterAuth({
   baseURL: env.BETTER_AUTH_URL,
   secret: env.BETTER_AUTH_SECRET,
+  trustedOrigins: [
+    "movies-app://",
+    "exp://",
+    "exp://**",
+    "exp://192.168.*.*:*/**",
+  ],
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 8,
@@ -48,12 +54,13 @@ export const auth = betterAuth({
     },
   },
   account: {
-    storeStateStrategy: "cookie",
+    storeStateStrategy: "database",
+    skipStateCookieCheck: true,
     storeAccountCookie: true,
   },
   advanced: {
     cookiePrefix: "movies-app",
-    useSecureCookies: true,
+    useSecureCookies: env.NODE_ENV === "production",
     database: {
       generateId: () => crypto.randomUUID(),
     },
