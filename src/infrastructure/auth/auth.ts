@@ -18,6 +18,7 @@ export const auth = betterAuth({
   ],
   emailAndPassword: {
     enabled: true,
+    requireEmailVerification: true,
     minPasswordLength: 8,
     maxPasswordLength: 32,
     onExistingUserSignUp: async ({ user }, request) => {
@@ -29,6 +30,9 @@ export const auth = betterAuth({
       hash: PasswordService.hashPassword,
       verify: PasswordService.verifyPassword,
     },
+  },
+  emailVerification: {
+    autoSignInAfterVerification: true,
   },
   socialProviders: {
     google: {
