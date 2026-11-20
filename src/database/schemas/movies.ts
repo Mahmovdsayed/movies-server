@@ -24,6 +24,7 @@ export const likedMoviesTable = pgTable(
     title: text("title").notNull(),
     imageUrl: text("image_url").notNull(),
     rating: real("rating").notNull(),
+    year: integer("year"),
     likedAt: timestamp("liked_at", { precision: 6, withTimezone: true })
       .notNull()
       .defaultNow(),

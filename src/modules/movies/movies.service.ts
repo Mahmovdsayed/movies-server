@@ -42,6 +42,7 @@ export class MoviesService implements IMoviesService {
         title: data.title,
         imageUrl: data.imageUrl,
         rating: data.rating,
+        year: data.year ?? null,
       })
       .returning();
 

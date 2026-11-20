@@ -10,6 +10,7 @@ export interface CreateLikedMovie {
   title: string;
   imageUrl: string;
   rating: number;
+  year?: number | undefined;
 }
 
 export interface IMoviesService {
